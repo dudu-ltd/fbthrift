@@ -1,0 +1,13 @@
+name: fbthrift
+description: Thrift for Dart, forkde from Apache Thrift and translated from fbthrift java version. 
+version: 1.0.0+1
+repository: https://github.com/dudu-ltd/fbthrift
+
+environment:
+  sdk: '>=2.19.0 <3.0.0'
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0
+dependencies:
+  fixnum: ^1.1.0
