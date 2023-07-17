@@ -13,7 +13,7 @@ class TSocketTransport extends TIOStreamTransport implements TSocketItf {
   final int _timeout;
   final int _connectionTimeout;
 
-  Stream<List<int>>? _bstl;
+  Stream<List<int?>>? _bstl;
 
   TSocketTransport(
       {Socket? socket,
@@ -79,7 +79,20 @@ class TSocketTransport extends TIOStreamTransport implements TSocketItf {
     _socket?.addStream(
         Stream.fromIterable(outputBuffer!.map<List<int>>((e) => e)));
     var inputBufferInt = [...(await _bstl?.first ?? [])];
-    inputBuffer = inputBufferInt.map<int>((e) => e.toSigned(8)).toList();
+    var total = [];
+    total.addAll(inputBufferInt);
+    if (inFrame) {
+      var totalLenBytes = inputBufferInt
+          .sublist(0, 4)
+          .map<int>((e) => e?.toSigned(8) ?? 0)
+          .toList();
+      var len = TFramedTransport.decodeWord(Int8List.fromList(totalLenBytes));
+      while (total.length < len + 4) {
+        inputBufferInt = [...(await _bstl?.first ?? [])];
+        total.addAll(inputBufferInt);
+      }
+    }
+    inputBuffer = total.map<int?>((e) => e?.toSigned(8)).toList();
     outputBuffer?.clear();
   }
 }

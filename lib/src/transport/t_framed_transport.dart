@@ -27,12 +27,14 @@ class TFramedTransport extends TTransport {
   int maxLength_ = 0;
   late TTransport transport_;
 
-  final TByteArrayOutputStream writeBuffer_ = TByteArrayOutputStream(1024);
+  late TByteArrayOutputStream writeBuffer_;
   TMemoryInputTransport? readBuffer_ = TMemoryInputTransport(Int8List(0));
 
   TFramedTransport(TTransport transport, [int maxLength = DEFAULT_MAX_LENGTH]) {
     transport_ = transport;
     maxLength_ = maxLength;
+    writeBuffer_ = TByteArrayOutputStream(maxLength);
+    transport_.inFrame = true;
   }
 
   @override

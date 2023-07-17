@@ -24,11 +24,17 @@ class THeaderProtocol extends TProtocol {
   TProtocol? _proto;
   int _protoId = 0;
 
-  THeaderProtocol(TTransport transport, {List<ClientTypes>? clientTypes})
-      : super(clientTypes == null
+  THeaderProtocol(
+    TTransport transport, {
+    List<ClientTypes>? clientTypes,
+    int maxLength = TFramedTransport.DEFAULT_MAX_LENGTH,
+  }) : super(clientTypes == null
             ? transport
             : THeaderTransport(
-                transport: transport, clientTypes: clientTypes)) {
+                transport: transport,
+                clientTypes: clientTypes,
+                maxLength: maxLength,
+              )) {
     _resetProtocol();
   }
 

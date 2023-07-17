@@ -22,6 +22,9 @@ abstract class TTransport {
   /// Returns [true] if the transport is open.
   bool get isOpen;
 
+  /// Marks the end of the a message, if applicable.
+  bool inFrame = false;
+
   /// Opens the transport for reading/writing.
   /// Throws [TTransportError] if the transport could not be opened.
   Future open();

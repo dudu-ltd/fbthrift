@@ -8,18 +8,18 @@ part of fbthrift;
 /// It takes an InputStream and an OutputStream and uses those to perform all transport operations.
 ///  This allows for compatibility with all the nice constructs Dart already has to provide a variety of types of streams.
 class TIOStreamTransport extends TTransport {
-  List<int>? _inputBuffer;
+  List<int?>? _inputBuffer;
   List<Int8List>? outputBuffer;
-  Iterator<int>? _readIterator;
+  Iterator<int?>? _readIterator;
 
   TIOStreamTransport();
 
-  set inputBuffer(List<int>? inputBuffer) {
+  set inputBuffer(List<int?>? inputBuffer) {
     _inputBuffer = inputBuffer;
     _readIterator = _inputBuffer?.iterator;
   }
 
-  List<int>? get inputBuffer => _inputBuffer;
+  List<int?>? get inputBuffer => _inputBuffer;
 
   @override
   bool get isOpen => true;

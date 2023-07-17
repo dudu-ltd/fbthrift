@@ -52,6 +52,7 @@ class THeaderTransport extends TFramedTransport {
     Map<String, String>? writeHeaders,
     Map<String, String>? writePersistentHeaders,
     List<ClientTypes>? clientTypes,
+    int maxLength = TFramedTransport.DEFAULT_MAX_LENGTH,
   })  : _writeTransforms = writeTransforms ?? <Transforms>[],
 
         // Always supported headers
@@ -62,7 +63,7 @@ class THeaderTransport extends TFramedTransport {
         _readTransforms = readTransforms ?? <int>[],
         _readHeaders = readHeaders ?? <String, String>{},
         _readPersistentHeaders = readPersistentHeaders ?? <String, String>{},
-        super(transport) {
+        super(transport, maxLength) {
     _supportedClients[ClientTypes.HEADERS.value] = true;
 
     if (clientTypes != null) {
