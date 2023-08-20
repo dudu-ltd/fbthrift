@@ -1,3 +1,6 @@
+## 1.0.0+3
+- fix: oneway supports
+
 ## 1.0.0+2
 - fix bugs 
 - feat: adding maxLength specification

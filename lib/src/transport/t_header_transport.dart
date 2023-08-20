@@ -360,11 +360,7 @@ class THeaderTransport extends TFramedTransport {
       throw TTransportError(null, "Unknown client type");
     }
 
-    if (oneway) {
-      await transport_.onewayFlush();
-    } else {
-      await transport_.flush();
-    }
+    await transport_.flush(oneway);
   }
 
   // final Int8List i32buf = Int8List(4);

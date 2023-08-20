@@ -77,7 +77,7 @@ class TIOStreamTransport extends TTransport {
   }
 
   @override
-  Future flush() {
+  Future flush([bool oneway = false]) {
     return Future.value();
   }
 }

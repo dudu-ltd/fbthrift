@@ -98,7 +98,7 @@ class TFramedTransport extends TTransport {
   }
 
   @override
-  Future flush() {
+  Future flush([bool oneway = false]) {
     final Int8List buff = writeBuffer_.buf;
     final int size = writeBuffer_.len();
     writeBuffer_.reset();
@@ -106,7 +106,7 @@ class TFramedTransport extends TTransport {
     encodeWord(size, i32buf, 0);
     transport_.write(i32buf, 0, 4);
     transport_.write(buff, 0, size);
-    return transport_.flush();
+    return transport_.flush(oneway);
   }
 
   /// Decode a big-endian 32-bit integer from an [Int8List].

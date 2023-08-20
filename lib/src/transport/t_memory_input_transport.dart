@@ -24,7 +24,7 @@ class TMemoryInputTransport extends TTransport {
   Future<void> close() => Future<void>.value();
 
   @override
-  Future flush() => throw UnimplementedError();
+  Future flush([bool oneway = false]) => throw UnimplementedError();
 
   @override
   bool get isOpen => true;

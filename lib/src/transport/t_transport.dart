@@ -69,11 +69,7 @@ abstract class TTransport {
 
   /// Flush any pending data out of a transport buffer.
   /// Throws [TTransportError] if there was an error writing out data.
-  Future flush();
-
-  Future onewayFlush() {
-    return flush();
-  }
+  Future flush([bool oneway = false]);
 
   /// Returns the number of bytes available in the write buffer.
   int getBytesRemainingInBuffer() {

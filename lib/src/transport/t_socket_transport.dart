@@ -75,9 +75,10 @@ class TSocketTransport extends TIOStreamTransport implements TSocketItf {
 
   /// write buffer to socket
   @override
-  Future flush() async {
-    _socket?.addStream(
+  Future flush([bool oneway = false]) async {
+    await _socket?.addStream(
         Stream.fromIterable(outputBuffer!.map<List<int>>((e) => e)));
+    if (oneway) return;
     var inputBufferInt = [...(await _bstl?.first ?? [])];
     var total = [];
     total.addAll(inputBufferInt);
