@@ -418,7 +418,7 @@ class TCompactProtocol extends TProtocol {
   @override
   double readDouble() {
     trans_.readAll(tempList, 0, 8);
-    return tempList.buffer.asByteData().getFloat64(0, Endian.little);
+    return tempList.buffer.asByteData().getFloat64(0, Endian.big);
   }
 
   @override

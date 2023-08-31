@@ -1,3 +1,6 @@
+## 1.0.0+4
+- fix: data error in TCompactProtocol.readDouble 
+
 ## 1.0.0+3
 - fix: oneway supports
 

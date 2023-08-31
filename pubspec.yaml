@@ -1,6 +1,6 @@
 name: fbthrift
 description: Thrift for Dart, forkde from Apache Thrift and translated from fbthrift java version. 
-version: 1.0.0+3
+version: 1.0.0+4
 repository: https://github.com/dudu-ltd/fbthrift
 
 environment:
