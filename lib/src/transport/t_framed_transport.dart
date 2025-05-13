@@ -33,7 +33,7 @@ class TFramedTransport extends TTransport {
   TFramedTransport(TTransport transport, [int maxLength = DEFAULT_MAX_LENGTH]) {
     transport_ = transport;
     maxLength_ = maxLength;
-    writeBuffer_ = TByteArrayOutputStream(maxLength);
+    writeBuffer_ = TByteArrayOutputStream(1024);
     transport_.inFrame = true;
   }
 
