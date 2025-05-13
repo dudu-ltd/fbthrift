@@ -58,4 +58,22 @@ class TMemoryInputTransport extends TTransport {
   void consumeBuffer(int len) {
     _pos += len;
   }
+
+  /// Returns the bytes list
+  @override
+  Int8List? getBuffer() {
+    return buffer;
+  }
+
+  /// Returns the position in the buffer.
+  @override
+  int getBufferPosition() {
+    return _pos;
+  }
+
+  /// Returns the number of bytes available in the write buffer.
+  @override
+  int getBytesRemainingInBuffer() {
+    return _endPos - _pos;
+  }
 }
