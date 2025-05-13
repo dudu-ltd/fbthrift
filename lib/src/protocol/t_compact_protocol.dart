@@ -557,7 +557,7 @@ class TCompactProtocol extends TProtocol {
   }
 
   Int64 zigzagToLong(Int64 n) {
-    return (n >> 1) ^ -(n & 1);
+    return n.shiftRightUnsigned(1) ^ -(n & 1);
   }
 
   Int64 byteToLong(Int8List bytes) {
