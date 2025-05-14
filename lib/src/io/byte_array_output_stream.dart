@@ -38,6 +38,9 @@ class ByteArrayOutputStream extends OutputStream {
     if (newCapacity - MAX_ARRAY_SIZE > 0) {
       newCapacity = _hugeCapacity(minCapacity);
     }
+    var oldBuf = buf;
+    buf = Int8List(newCapacity);
+    buf.setRange(0, oldCapacity, oldBuf);
   }
 
   static int _hugeCapacity(int minCapacity) {
